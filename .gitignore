@@ -1,2 +1,3 @@
 
-*.pyc
+"Sentiment Analysis/__pycache__/"
+"Sentiment Analysis/log/"
