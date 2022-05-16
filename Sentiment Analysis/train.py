@@ -72,9 +72,9 @@ hist = model.fit(X_train, y_train, epochs=3,
 
 # %% Model Evaluation
 # %%% preallocation of memory approach
-predicted_advanced = np.empty([len(X_test), 2])
-for i, test in enumerate(X_test):
-    predicted_advanced[i, :] = model.predict(np.expand_dims(test, 0))
+# predicted_advanced = np.empty([len(X_test), 2])
+# for i, test in enumerate(X_test):
+#     predicted_advanced[i, :] = model.predict(np.expand_dims(test, 0))
 
 # faster method
 predicted = model.predict(X_test)
