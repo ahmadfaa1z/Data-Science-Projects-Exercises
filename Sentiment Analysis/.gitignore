@@ -1,5 +1,5 @@
 
 __pycache__/
+sa_model_deploy.py
+sentiment_analysis_practice.py
 log/
-*.h5
-*.json
