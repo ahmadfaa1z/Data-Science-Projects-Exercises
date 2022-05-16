@@ -8,22 +8,22 @@ Created on Fri May 13 10:02:56 2022
 # %% Imports & Constants
 import os
 import pickle
-import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from sklearn.svm import SVC
+from sklearn.pipeline import Pipeline
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import KNNImputer
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import classification_report, confusion_matrix
-from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
-from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Input, Dense, Dropout
 
-SCALER_PATH = os.path.join(os.getcwd(), 'saved_objects', 'mm_scaler.pkl')
-ENCODER_PATH = os.path.join(os.getcwd(), 'saved_objects', 'oh_encoder.pkl')
-DATASET_PATH = os.path.join(os.getcwd(), 'diabetes.csv')
-MODEL_PATH = os.path.join(os.getcwd(), 'saved_objects', 'model.h5')
+SCALER_PATH = os.path.join(os.getcwd(), 'saved_objects', 'mm_scaler_ml.pkl')
+PIPELINE_PATH = os.path.join(os.getcwd(), 'saved_objects', 'ml_model.pkl')
+DATASET_PATH = os.path.join(os.getcwd(), 'database', 'diabetes.csv')
 
 # %% EDA
 # %%% Load data
@@ -39,6 +39,7 @@ df.describe().T['min']
 # %%% Clean data
 # %%%% Drop duplicates
 df.drop_duplicates(inplace=True)
+
 # %%%% impute nan values
 imputer = KNNImputer(n_neighbors=5, metric='nan_euclidean')
 imputed = imputer.fit_transform(df)
@@ -64,13 +65,11 @@ for feature in df.columns[1:6]:
 # %%% Features selection
 # %%%% heatmap
 plt.figure()
-sns.heatmap(df_imputed.corr(), annot=True, cmap=plt.cm.Reds)
+sns.heatmap(df_imputed.corr(method='kendall'), annot=True, cmap=plt.cm.Reds)
 plt.show()
 
-# -> Glucose, BMI, pregnancies, age
-
 # %%% Data preprocessing
-X = df_imputed[['Glucose', 'BMI']].to_numpy()
+X = df_imputed.drop(labels=['Outcome'], axis=1).to_numpy()
 y = df_imputed['Outcome'].values
 
 # %%%% minmax scalling
@@ -78,52 +77,33 @@ mm_scaler = MinMaxScaler()
 X = mm_scaler.fit_transform(X)
 pickle.dump(mm_scaler, open(SCALER_PATH, 'wb'))
 
-# %%%% one hot encoding
-oh_encoder = OneHotEncoder(sparse=False)
-y = oh_encoder.fit_transform(y.reshape(-1, 1))
-pickle.dump(oh_encoder, open(ENCODER_PATH, 'wb'))
-
 # %%%% train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y,
                                                     test_size=0.3,
                                                     random_state=20)
 
 # %% Machine Learning
-# TODO: do machine learning
+steps_tree = [('Tree', DecisionTreeClassifier())]
+steps_forest = [('Forest', RandomForestClassifier())]
+steps_logistic = [('Logis', LogisticRegression(solver='liblinear'))]
+steps_svc = [('SVC', SVC())]
+steps_knn = [('KNN', KNeighborsClassifier())]
 
-# %% Deep Learning
-model = Sequential()
-model.add(Input(shape=2))
-model.add(Dense(50, activation='relu'))
-model.add(Dropout(0.2))
-model.add(Dense(50, activation='relu'))
-model.add(Dropout(0.2))
-model.add(Dense(50, activation='relu'))
-model.add(Dropout(0.2))
-model.add(Dense(2, activation='softmax'))
-model.summary()
+tree_pipeline = Pipeline(steps_tree)
+forest_pipeline = Pipeline(steps_forest)
+logistic_pipeline = Pipeline(steps_logistic)
+svc_pipeline = Pipeline(steps_svc)
+knn_pipeline = Pipeline(steps_knn)
 
-# %%% model compile
-model.compile(optimizer='adam', loss='categorical_crossentropy',
-              metrics='acc')
+pipelines = [tree_pipeline, forest_pipeline, logistic_pipeline,
+             svc_pipeline, knn_pipeline]
 
-# %%% model training
-hist = model.fit(X_train, y_train, epochs=30,
-                 validation_data=(X_test, y_test))
+for p in pipelines:
+    p.fit(X_train, y_train)
 
-# %%% model save
-model.save(MODEL_PATH)
+print('Without PCA:')
+for i, p in enumerate(pipelines):
+    print(p.steps[0][0]+':\t', p.score(X_test, y_test))
 
-# %%% Model Evaluation
-# TODO: justify model
-predicted = model.predict(X_test)
-
-y_pred = np.argmax(predicted, 1)
-y_true = np.argmax(y_test, 1)
-
-print(classification_report(y_true, y_pred))
-print(confusion_matrix(y_true, y_pred))
-print(accuracy_score(y_true, y_pred))
-# about 75+ % with CNN
-
-# %% Deploy
+# %%% save ML model
+pickle.dump(svc_pipeline, open(PIPELINE_PATH, 'wb'))
