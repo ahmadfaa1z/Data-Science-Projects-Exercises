@@ -76,8 +76,11 @@ predicted_advanced = np.empty([len(X_test), 2])
 for i, test in enumerate(X_test):
     predicted_advanced[i, :] = model.predict(np.expand_dims(test, 0))
 
+# faster method
+predicted = model.predict(X_test)
+
 # %% Model Analysis
-y_pred = np.argmax(predicted_advanced, 1)
+y_pred = np.argmax(predicted, 1)
 y_true = np.argmax(y_test, 1)
 dlm.model_analysis(y_true, y_pred)
 
