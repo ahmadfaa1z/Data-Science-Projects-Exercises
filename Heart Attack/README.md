@@ -30,7 +30,7 @@ Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/rashikrah
 - To run app,
   1. Open Anaconda promt
   2. Change directory to project folder
-  3. Type `streamlit run deploy.app`
+  3. Type `streamlit run deploy.py`
 
 ### Top View
 <img src="../Heart Attack/static/app-top-view.png" width=800>
