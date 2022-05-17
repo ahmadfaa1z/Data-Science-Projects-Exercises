@@ -41,8 +41,8 @@ def separate_features_target(df, target_name):
     return (x, y)
 
 
-def plot_features_vs_output(df, data_type, feature_name, target_name='output',
-                            save=False):
+def plot_features_target(df, data_type, feature_name, target_name='output',
+                         save=False):
     """
     Create a figure showing the relationship between the output ant
     the categorical/numerical features.

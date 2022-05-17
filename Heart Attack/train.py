@@ -11,7 +11,7 @@ import pickle
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-from ha_lib import separate_features_target, plot_features_vs_output
+from ha_lib import separate_features_target, plot_features_target
 from ha_lib import evaluate_model
 from sklearn.pipeline import Pipeline
 from sklearn.neighbors import KNeighborsClassifier
@@ -56,13 +56,13 @@ cat_cols = ['sex', 'cp', 'fbs', 'restecg',
 
 # %%%%% Categorical features vs output
 for f in cat_cols:
-    plot_features_vs_output(df, data_type='categorical',
-                            feature_name=f, save=True)
+    plot_features_target(df, data_type='categorical',
+                         feature_name=f, save=True)
 
 # %%%%% Continuous features vs output
 for f in con_cols:
-    plot_features_vs_output(df, data_type='continuous',
-                            feature_name=f, save=True)
+    plot_features_target(df, data_type='continuous',
+                         feature_name=f, save=True)
 
 # %%% 3) Clean data
 df.drop_duplicates(inplace=True)  # drop duplicates and keep first
