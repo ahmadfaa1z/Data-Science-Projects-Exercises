@@ -29,7 +29,7 @@ Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/rashikrah
 # Streamlit App
 - To run app,
   1. Open Anaconda promt
-  2. change directory to project folder
+  2. Change directory to project folder
   3. Type `streamlit run deploy.app`
 
 ### Top View
