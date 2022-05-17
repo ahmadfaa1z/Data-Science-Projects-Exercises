@@ -50,7 +50,7 @@ Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/rashikrah
 - One of them are drop during data cleaning
 
 ## Relationship between features & target
-- Figures below shows the relationship between the each feature and the chance of getting heart attack (output)
+- Figures below shows the relationship between each feature and the chance of getting heart attack (output)
 ### Categorical Features Visualization
 <img src="../Heart Attack/static/count-caa-output.png" width=400>
 <img src="../Heart Attack/static/count-cp-output.png" width=400>
