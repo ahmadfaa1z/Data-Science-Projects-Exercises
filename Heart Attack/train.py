@@ -76,6 +76,9 @@ plt.show()
 The heatmap shows high +ve correlation between output and cp, thalachh, slp
 while there is also high -ve correlation between output and exng, oldpeak, caa,
 thall
+
+Although there are certain features that have high correlation with the target,
+all features are used during training for the machine learning model.
 """
 
 # Get features data and target data
@@ -138,7 +141,3 @@ y_pred = best_pipeline.predict(x_test)
 y_true = y_test
 
 evaluate_model(best_pipeline, y_true, y_pred)
-# print(classification_report(y_true, y_pred))
-# print(confusion_matrix(y_true, y_pred))
-# print('The best classifier is {} and the accuracy is {:.2f}'.format(
-#     best_pipeline.steps[0][1], accuracy_score(y_true, y_pred)*100))
