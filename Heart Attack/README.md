@@ -27,6 +27,11 @@ Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/rashikrah
   - This folder contains the dataset related to heart attack (heart.csv).
 
 # Streamlit App
+- To run app,
+  1. Open Anaconda promt
+  2. change directory to project folder
+  3. Type "streamlit run deploy.app"
+
 ### Top View
 <img src="../Heart Attack/static/app-top-view.png" width=800>
 
