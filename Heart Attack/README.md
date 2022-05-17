@@ -62,6 +62,11 @@ Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/rashikrah
 <img src="../Heart Attack/static/histogram-thalachh-output.png" width=400>
 <img src="../Heart Attack/static/histogram-trtbps-output.png" width=400>
 
+#### Heatmap
+<img src="../Heart Attack/static/heatmap.png" width=400>
+
+- Although there are certain features that have high correlation with the target, all features are used during training for the machine learning model.
+
 # Model performance & Reports
 <center><img src="../Heart Attack/static/tested-classifiers-scores.png" width=200 ></center>
 
