@@ -71,7 +71,7 @@ Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/rashikrah
 - The accuracy scores of the classifiers might varied due to random hyperparameters during creation of classifier.
 - With that said, the best classifier and the max accuracy score could also change.
 
-# During Deployment
+## During Deployment
 <center><img src="../Heart Attack/static/report-deploy.png" width=450 ></center>
 
 - This is the report when validating model with new data
