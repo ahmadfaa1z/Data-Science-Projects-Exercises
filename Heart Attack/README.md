@@ -36,6 +36,7 @@ Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/rashikrah
 # Exploratory Data Analysis
 ## Missing values
 <center><img src="../Heart Attack/static/missing-values-in-dataframe.jpg" width=300></center>
+
 - No missing values in the dataset
 
 ## Duplicated samples/rows
