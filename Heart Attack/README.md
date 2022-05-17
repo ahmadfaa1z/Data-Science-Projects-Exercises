@@ -63,7 +63,7 @@ Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/rashikrah
 <img src="../Heart Attack/static/histogram-trtbps-output.png" width=400>
 
 #### Heatmap
-<img src="../Heart Attack/static/heatmap.png" width=400>
+<center><img src="../Heart Attack/static/heatmap.png" width=800></center>
 
 - Although there are certain features that have high correlation with the target, all features are used during training for the machine learning model.
 
