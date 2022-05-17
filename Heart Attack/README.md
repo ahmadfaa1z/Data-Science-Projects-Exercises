@@ -64,6 +64,8 @@ Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/rashikrah
 
 # Model performance & Reports
 <center><img src="../Heart Attack/static/tested-classifiers-scores.png" width=200 ></center>
+
+- Five classifiers are tested
 <center><img src="../Heart Attack/static/reports.png" width=450 ></center>
 
 - The accuracy scores of the classifiers might varied due to random hyperparameters during creation of classifier.
