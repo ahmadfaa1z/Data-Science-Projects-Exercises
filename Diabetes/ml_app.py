@@ -14,7 +14,7 @@ import streamlit as st
 SCALER_PATH = os.path.join(os.getcwd(), 'saved_objects', 'mm_scaler_ml.pkl')
 PIPELINE_PATH = os.path.join(os.getcwd(), 'saved_objects', 'ml_model.pkl')
 
-# %% load scaler & encoder
+# %% load scaler
 with open(SCALER_PATH, 'rb') as file:
     mm_scaler = pickle.load(file)
 
