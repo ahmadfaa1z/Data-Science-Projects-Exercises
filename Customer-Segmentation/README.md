@@ -36,7 +36,7 @@
 - To run Tensorboard,
   1. Open Anaconda promt
   2. Activate the specific environment
-  4. Type `tensorboard --logdir <path>`
+  3. Type `tensorboard --logdir <path>`
     - replace `<path>` with the path to the logs folder
 
 # Exploratory Data Analysis
