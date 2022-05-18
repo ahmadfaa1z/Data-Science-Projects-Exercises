@@ -174,5 +174,7 @@ plt.show()
     underfitting. What we can do to improve this is probably add more neurons
     or layers which is simply make a bigger and deeper neural network model.
     Other things that we could do is by increasing the epoch and also maybe
-    decrease the learning rate
+    decrease the learning rate.
+
+    But after trying it, machine learning model might give a different score.
 """
