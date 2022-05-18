@@ -83,4 +83,4 @@
 <center><img src="../Customer-Segmentation/static/tensorboard-view.jpeg" width=500></center>
 
 ## References
-Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/abisheksudarshan/customer-segmentation)
+Dataset retrieved from: https://www.kaggle.com/datasets/abisheksudarshan/customer-segmentation
