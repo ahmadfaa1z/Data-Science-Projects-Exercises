@@ -1,9 +1,13 @@
+<center>
+
 ![](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
 ![](https://img.shields.io/badge/Spyder%20Ide-FF0000?style=for-the-badge&logo=spyder%20ide&logoColor=white)
 ![](https://img.shields.io/badge/Numpy-777BB4?style=for-the-badge&logo=numpy&logoColor=white)
 ![](https://img.shields.io/badge/Pandas-2C2D72?style=for-the-badge&logo=pandas&logoColor=white)
 ![](https://img.shields.io/badge/scikit_learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
 ![](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+
+</center>
 
 # Customer Segmentation
 ## Description
@@ -12,9 +16,9 @@
 
 ## Python Scripts
 - **train.py**
-  - This script trains the machine learning model and save important settings to be used in the deploy script.
+  - This script trains the deep learning model and save important settings to be used in the deploy script.
 - **deploy.py**
-  - This script is for predicting new data through streamlit app by accessing the model and scaler created by the train script.
+  - This script is for predicting new data by accessing the model and other objects saved from train script so that the customer segmentation at `new_customer.csv` can be predicted.
 - **ha_lib.py**
   - This file is a library containing functions to be used in the train and deploy scripts.
 
@@ -38,6 +42,10 @@
   2. Activate the specific environment
   4. Type `tensorboard --logdir <path>`
     - replace `<path>` with the path to the logs folder
+
+# Deep Learning Model
+## Model Architecture
+<center></center>
 
 ## References
 Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/abisheksudarshan/customer-segmentation)
