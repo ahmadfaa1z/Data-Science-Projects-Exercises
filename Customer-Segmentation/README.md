@@ -40,7 +40,7 @@
     - replace `<path>` with the path to the logs folder
 
 # Exploratory Data Analysis
-- By loading the data from `train.csv`
+- Load the data from `train.csv`
 
 ## Missing values
 <center><img src="../Customer-Segmentation/static/missing-values-train-dataset.png" width=200></center>
