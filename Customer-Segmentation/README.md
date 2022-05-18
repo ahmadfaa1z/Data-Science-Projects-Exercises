@@ -9,5 +9,35 @@
 ## Description
 - This is a multi-class classification where customers are classified into 4 segments 
 (A, B, C, D) based on their customer’s gender, age, profession, spending pattern, and etc.
+
+## Python Scripts
+- **train.py**
+  - This script trains the machine learning model and save important settings to be used in the deploy script.
+- **deploy.py**
+  - This script is for predicting new data through streamlit app by accessing the model and scaler created by the train script.
+- **ha_lib.py**
+  - This file is a library containing functions to be used in the train and deploy scripts.
+
+## Directories
+- *saved_objects*
+  - This is where the deep learning model and other objects are saved such as the encoders, imputer and scaler.
+- *static*
+  - This folder contains image files related to this Customer Segmentation project.
+- *database*
+  - This folder contains the dataset related to the project.
+  - **train.csv**
+    - This is the data for training the model
+  - **new_customers.csv**
+    - This is the test data to get the label for customer's segmentation (class label)
+  - **new_customers_results.csv**
+    - This is the test data with customer's segmentation target label
+
+## How to run Tensorboard
+- To run Tensorboard,
+  1. Open Anaconda promt
+  2. Activate the specific environment
+  4. Type `tensorboard --logdir <path>`
+    - replace `<path>` with the path to the logs folder
+
 ## References
 Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/abisheksudarshan/customer-segmentation)
