@@ -39,12 +39,48 @@
   4. Type `tensorboard --logdir <path>`
     - replace `<path>` with the path to the logs folder
 
+# Exploratory Data Analysis
+- By loading the data from `train.csv`
+
+## Missing values
+<center><img src="../Customer-Segmentation/static/missing-values-train-dataset.png" width=200></center>
+<center><img src="../Customer-Segmentation/static/plot-nan-heatmap-train-dataset.png" width=400></center>
+
+- There are lots of missing values in the dataset
+- These missing values will be cleaned using the KNNImputer after all the categorical features are encoded to numerical data
+<center><img src="../Customer-Segmentation/static/heatmap-no-missing-values.png" width=400></center>
+
+## Duplicated samples/rows
+- No duplicated samples in `train.csv`
+
+## Relationship between features & target
+- Figures below shows the relationship between each feature and the chance of getting heart attack (output)
+<img src="../Customer-Segmentation/static/histogram-Age-Segmentation.png" width=400>
+<img src="../Customer-Segmentation/static/count-Gender-Segmentation.png" width=400>
+<img src="../Customer-Segmentation/static/count-Ever_Married-Segmentation.png" width=400>
+<img src="../Customer-Segmentation/static/count-Family_Size-Segmentation.png" width=400>
+<img src="../Customer-Segmentation/static/count-Graduated-Segmentation.png" width=400>
+<img src="../Customer-Segmentation/static/count-Profession-Segmentation.png" width=400>
+<img src="../Customer-Segmentation/static/count-Spending_Score-Segmentation.png" width=400>
+<img src="../Customer-Segmentation/static/count-Var_1-Segmentation.png" width=400>
+<img src="../Customer-Segmentation/static/count-Work_Experience-Segmentation.png" width=400>
+
+- For this project, all the features are used in training the deep learning model.
+
 # Deep Learning Model
 ## Model Architecture
 <center><img src="../Customer-Segmentation/static/model-architecture.png" width=200></center>
 
 - This is the architecture of the deep learning model for this project.
+## Model Performance
+- Overall, the model training seems to have average accuracy score of 50%+
+- Even after trying to improve the deep learning model by adding more neurons or layers, increasing epoch and reducing learning rate. The accuracy score does not get pass 60%.
+- Machine learning model is not tested for this project yet.
+<center><img src="../Customer-Segmentation/static/classification-report.png" width=450></center>
+<center><img src="../Customer-Segmentation/static/confusion-matrix-display.png" width=500></center>
 
+## Tensorboard (training graph)
+<center><img src="../Customer-Segmentation/static/tensorboard-view.jpeg" width=500></center>
 
 ## References
 Dataset retrieved from: [Dataset Link](https://www.kaggle.com/datasets/abisheksudarshan/customer-segmentation)
