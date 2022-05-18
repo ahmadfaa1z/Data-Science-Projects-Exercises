@@ -157,3 +157,22 @@ def check_unique_values(data, col_name):
 
     """
     print('{}:\n{}'.format(col_name, data[col_name].unique()))
+
+
+def return_saved_objects(path):
+    """
+    Return an object from a pickle file.
+
+    Parameters
+    ----------
+    path : str
+        The path to the saved objects.
+
+    Returns
+    -------
+    object
+        Return an object from a pickle file.
+
+    """
+    with open(path, 'rb') as file:
+        return pickle.load(file)

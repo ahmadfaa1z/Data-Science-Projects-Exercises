@@ -11,7 +11,6 @@ import pickle
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from tensorflow.keras.optimizers import Adam
 import matplotlib.pyplot as plt
 from datetime import datetime
 from cs_lib import plot_missing_val, plot_features_target, encoder_cat_features
@@ -24,6 +23,7 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras import Sequential
 from tensorflow.keras.utils import plot_model
 from tensorflow.keras.layers import Input, Dense, Dropout, BatchNormalization
+from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import TensorBoard, EarlyStopping
 
 # %% Paths
@@ -31,8 +31,10 @@ TRAIN_DATASET_PATH = os.path.join(os.getcwd(), 'database', 'train.csv')
 SCALER_PATH = os.path.join(os.getcwd(), 'saved_objects', 'scaler.pkl')
 ENCODER_PATH = os.path.join(os.getcwd(), 'saved_objects', 'oh_encoder.pkl')
 IMPUTER_PATH = os.path.join(os.getcwd(), 'saved_objects', 'knn_imputer.pkl')
-LOG_PATH = os.path.join(os.getcwd(), 'logs')
+TARGET_ENCODER_PATH = os.path.join(os.getcwd(), 'saved_objects',
+                                   'encoder-Segmentation.pkl')
 MODEL_PATH = os.path.join(os.getcwd(), 'saved_objects', 'dl_model.h5')
+LOG_PATH = os.path.join(os.getcwd(), 'logs')
 PLOT_MODEL_PATH = os.path.join(os.getcwd(), 'static',
                                'model-architecture.png')
 FIGURES_PATH = os.path.join(os.getcwd(), 'static')
@@ -160,7 +162,8 @@ acc_score = round(accuracy_score(y_test.argmax(1), y_pred.argmax(1))*100, 2)
 print(f'The accuracy score is {acc_score}%')
 
 cm = confusion_matrix(y_test.argmax(1), y_pred.argmax(1))
-disp = ConfusionMatrixDisplay(cm, display_labels=list(range(4)))
+disp_labels = sorted(df['Segmentation'].unique())
+disp = ConfusionMatrixDisplay(cm, display_labels=disp_labels)
 plt.figure()
 disp.plot(cmap=plt.cm.Blues)
 plt.savefig(os.path.join(FIGURES_PATH, 'confusion-matrix-display.png'))

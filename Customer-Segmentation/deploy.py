@@ -6,11 +6,11 @@ Created on Wed May 18 09:27:26 2022
 """
 # %% Imports
 import os
-import pickle
 import numpy as np
 import pandas as pd
 from tensorflow.keras.models import load_model
 from cs_lib import encoder_cat_features, separate_features_target
+from cs_lib import return_saved_objects
 
 # %% Paths
 TEST_DATASET_PATH = os.path.join(os.getcwd(), 'database', 'new_customers.csv')
@@ -23,18 +23,11 @@ MODEL_PATH = os.path.join(os.getcwd(), 'saved_objects', 'dl_model.h5')
 TARGET_ENCODER_PATH = os.path.join(os.getcwd(), 'saved_objects',
                                    'encoder-Segmentation.pkl')
 
-# %% load scaler & encoder
-with open(SCALER_PATH, 'rb') as file:
-    mm_scaler = pickle.load(file)
-
-with open(ENCODER_PATH, 'rb') as file:
-    oh_encoder = pickle.load(file)
-
-with open(IMPUTER_PATH, 'rb') as file:
-    imputer = pickle.load(file)
-
-with open(TARGET_ENCODER_PATH, 'rb') as file:
-    segmentation_encoder = pickle.load(file)
+# %% Load objects
+mm_scaler = return_saved_objects(SCALER_PATH)
+oh_encoder = return_saved_objects(ENCODER_PATH)
+imputer = return_saved_objects(IMPUTER_PATH)
+segmentation_encoder = return_saved_objects(TARGET_ENCODER_PATH)
 
 # %% Load DL model
 model = load_model(MODEL_PATH)
@@ -49,8 +42,6 @@ cat_features = cat_cols[:-1]
 
 # %%% Data Cleaning
 df_clean = df_test.copy()  # create dataframe copy for cleaning
-# # drop ID columns as it is not treated as a feature
-# df_clean = df_clean.drop(labels=['ID'], axis=1)
 
 # %%%% encode categorical data & change to numerical
 for col_name in cat_cols:
@@ -69,6 +60,9 @@ X_scaled = mm_scaler.transform(X)
 # %% Model prediction
 y_pred = model.predict(X_scaled).argmax(1)
 
+# get A B C D labels by using inverse_transform
 label_pred = segmentation_encoder.inverse_transform(y_pred)
+
+# save segmentation as a result dataset
 df_test['Segmentation'] = label_pred
 df_test.to_csv(SAVE_RESULT, index=False)
