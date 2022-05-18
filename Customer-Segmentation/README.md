@@ -54,7 +54,7 @@
 - No duplicated samples in `train.csv`
 
 ## Relationship between features & target
-- Figures below shows the relationship between each feature and the chance of getting heart attack (output)
+- Figures below shows the relationship between each feature and segmentation labels (A, B, C , D)
 <img src="../Customer-Segmentation/static/histogram-Age-Segmentation.png" width=400>
 <img src="../Customer-Segmentation/static/count-Gender-Segmentation.png" width=400>
 <img src="../Customer-Segmentation/static/count-Ever_Married-Segmentation.png" width=400>
