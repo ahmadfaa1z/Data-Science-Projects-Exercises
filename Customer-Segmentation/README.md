@@ -15,7 +15,7 @@
   - This script trains the deep learning model and save important settings to be used in the deploy script.
 - **deploy.py**
   - This script is for predicting new data by accessing the model and other objects saved from train script so that the customer segmentation at `new_customer.csv` can be predicted.
-- **ha_lib.py**
+- **cs_lib.py**
   - This file is a library containing functions to be used in the train and deploy scripts.
 
 ## Directories
