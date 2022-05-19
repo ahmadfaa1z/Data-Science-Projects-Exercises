@@ -69,7 +69,7 @@
 - Multiple log files where different model configurations are viewed also in tensorboard.
 <center><img src="../Articles-Categorization/static/confusion-matrix-plot.png" width=400></center>
 
-- The above confusion matrix is plotted by one of the high performing model which can predict the true label with great accuracy.
+- The above confusion matrix shows how much True label are correctly predicted and which label are predicted wrongly.
 
 <center><img src="../Articles-Categorization/static/classification-report-87.png" width=400></center>
 
