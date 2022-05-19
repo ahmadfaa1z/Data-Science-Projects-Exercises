@@ -16,9 +16,15 @@
   - This is the python script that trains a Recurrent Neural Network Model using embedding, LSTM and bidirectional layers.
 
 ## Directories
+- *database*
+  - This folder contains the data to be trained which were loaded from the URL: https://raw.githubusercontent.com/susanli2016/PyCon-Canada-2019-NLP-Tutorial/master/bbc-text.csv
 - *logs*
   - This folder contains the log files required to view tensorboard.
   - Some of the training log files may not be included as there are a lot of files and I do not want it to clutter my changed files for git commit.
+- *report*
+  - This folder contains the information of settings configured and the performance the model gets.
+- *reports_data*
+  - This folder contains all the data in form of a dictionary that consists of settings and performance for that config.
 - *saved_models*
   - This folder contains the model, tokenizer data and other objects related to this project.
 - *static*
@@ -64,3 +70,7 @@
 <center><img src="../Articles-Categorization/static/confusion-matrix-plot.png" width=400></center>
 
 - The above confusion matrix is plotted by one of the high performing model which can predict the true label with great accuracy.
+
+<center><img src="../Articles-Categorization/static/classification-report-87.png" width=400></center>
+
+- This is one of the classification report that I get.
