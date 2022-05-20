@@ -136,7 +136,7 @@ pickle.dump(config.performance_dict, open(os.path.join(
     PERFORMANCE_DATA_PATH, f'data_{config.config_num}.pkl'), 'wb'))
 
 # %% Uncomment below to save different reports
-# save_reports(data_num=3)  # save to a csv file
+save_reports(data_num=3)  # save to a csv file
 
 # %% Discussion
 # =============================================================================
