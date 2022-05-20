@@ -6,3 +6,4 @@
 - [Heart Attack](https://github.com/ahmadfaa1z/Data-Science-Projects-Exercises/tree/main/Heart%20Attack)
 - [Customer Segmentation](https://github.com/ahmadfaa1z/Data-Science-Projects-Exercises/tree/main/Customer-Segmentation)
 - [Articles Categorization](https://github.com/ahmadfaa1z/Data-Science-Projects-Exercises/tree/main/Articles-Categorization)
+- [Prediction of New COVID Cases](https://github.com/ahmadfaa1z/Data-Science-Projects-Exercises/tree/main/New-Cases-Prediction)
