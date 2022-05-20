@@ -44,7 +44,7 @@ When the train dataset and test dataset are loaded. There are some non-numerical
 <center><img src="../New-Cases-Prediction/static/model-architecture.png" width=200></center>
 
 - This is the model architecture used for this project.
-- Loss and metrics used are mean squared error (MSE)
+- Loss and metrics used for this model are the mean squared error (MSE).
 ### Model Performance
 <center><img src="../New-Cases-Prediction/static/tensorboard-training-graph.png" width=200></center>
 
