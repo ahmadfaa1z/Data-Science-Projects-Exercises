@@ -7,11 +7,11 @@
 
 # New Cases Prediction
 ## Description
-This project analyse the past cases of 30 days in Malaysia to predict number of new cases using a deep learning model with LSTM neural network.
+This project analyze the past cases of 30 days in Malaysia to predict number of new cases using a deep learning model with LSTM neural network.
 
 ## Python Scripts
 - `train.py`
-  - This is the main script for training the deep learning model and analyse the model performance by getting the mean absolute percentage error and plotting the predicted and actual cases with test data.
+  - This is the main script for training the deep learning model and analyze the model performance by getting the mean absolute percentage error and plotting the predicted and actual cases with test data.
 - `ncmodule.py`
   - This module contains the functions needed for the main script to run.
 ## Directories
