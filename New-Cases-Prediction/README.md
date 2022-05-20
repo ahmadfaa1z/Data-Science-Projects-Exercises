@@ -51,7 +51,7 @@ When the train dataset and test dataset are loaded. There are some non-numerical
 - This is the training graph viewed in tensorboard.
 <center><img src="../New-Cases-Prediction/static/MAPE.png" width=500></center>
 
-- The mean absolute percentage error for the model created is less than $1\%$.
+- The mean absolute percentage error for the model created is less than $$1\%$$.
 
 ## Results
 <center><img src="../New-Cases-Prediction/static/pred-actual-minmax-scale.png" width=400></center>
