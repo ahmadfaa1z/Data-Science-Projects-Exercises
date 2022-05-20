@@ -141,7 +141,7 @@ class ModelConfig():
             plt.show()
 
 
-def plot_training(hist, to_save='False'):
+def plot_training(hist, to_save=False):
     loss = list(hist.history.keys())[::2]
     metrics = list(hist.history.keys())[1::2]
 
