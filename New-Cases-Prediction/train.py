@@ -125,4 +125,6 @@ print("The mean absolute percentage error for this model is {:.2f}%".format(
 """
     Reports:
         The MAPE for this model ranges from 0.16% to 0.27%
+        Even with different imputation method use for the missing values,
+        the MAPE is still below 1%.
 """
