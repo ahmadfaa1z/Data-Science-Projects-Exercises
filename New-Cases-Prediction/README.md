@@ -37,7 +37,7 @@ When the train dataset and test dataset are loaded. There are some non-numerical
 ### EDA steps:
 1. Convert non-numerical data to missing values in new_cases column for train dataset.
 2. Impute missing values with linear interpolation method
-  - Plot the graph to visualize the data (as a reference)
+  - Plot the graph to visualize the data (as references)
 3. Get train and test data with window size of 30 days to be trained to the deep learning model.
 
 ## Deep Learning Model
