@@ -33,7 +33,7 @@ segmentation_encoder = return_saved_objects(TARGET_ENCODER_PATH)
 model = load_model(MODEL_PATH)
 
 # %% Load test data
-df_test = pd.read_csv(TEST_DATASET_PATH)
+df_test = pd.read_csv(TEST_DATASET_PATH, index_col='ID')
 num_cols = list(df_test.columns[
     (df_test.dtypes == 'int64') | (df_test.dtypes == 'float64')
 ])
@@ -65,4 +65,5 @@ label_pred = segmentation_encoder.inverse_transform(y_pred)
 
 # save segmentation as a result dataset
 df_test['Segmentation'] = label_pred
+df_test = df_test.reset_index()
 df_test.to_csv(SAVE_RESULT, index=False)

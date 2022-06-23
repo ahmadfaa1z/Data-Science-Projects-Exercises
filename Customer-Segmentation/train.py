@@ -41,7 +41,7 @@ FIGURES_PATH = os.path.join(os.getcwd(), 'static')
 
 # %% EDA
 # %%% 1) Load data
-df = pd.read_csv(TRAIN_DATASET_PATH)
+df = pd.read_csv(TRAIN_DATASET_PATH, index_col='ID')
 
 # %%% 2) Inspect data
 df.info()  # overall info
@@ -67,7 +67,7 @@ df.boxplot()
 plot_missing_val(df, to_save=True, f_name='plot-nan-heatmap-train-dataset')
 
 # %%%%% Relationship between features & target excluding missing values
-for col_name in cat_features+num_cols[2:]:
+for col_name in cat_features+num_cols[1:]:
     plot_features_target(df, 'categorical', col_name, save=True)
 plot_features_target(df, 'continuous', 'Age', save=True)
 
@@ -96,7 +96,7 @@ plot_missing_val(df_clean, to_save=True, f_name='heatmap-no-missing-values')
 
 # %%% 4) Features Selection
 plt.figure(figsize=(12, 12))
-sns.heatmap(df_clean.corr(), annot=True, cmap='GnBu')
+sns.heatmap(df_clean.corr(method='kendall'), annot=True, cmap='GnBu')
 plt.show()
 
 # %%% 5) Data Preprocessing
@@ -120,7 +120,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y,
 
 # %% Deep Learning
 model = Sequential()
-model.add(Input(shape=10))
+model.add(Input(shape=9))
 model.add(Dense(256, activation='relu'))
 model.add(BatchNormalization())
 model.add(Dropout(0.5))
