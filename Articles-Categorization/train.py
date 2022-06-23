@@ -146,5 +146,5 @@ save_reports(data_num=3)  # save to a csv file
     Looking at the models_performance.csv, maxlen =  400 give better
     performance than maxlen = 800.
 
-    Will add more later...
+    More configurations will be tested...
 """
