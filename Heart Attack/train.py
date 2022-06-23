@@ -98,7 +98,7 @@ x_train, x_test, y_train, y_test = train_test_split(X, y,
 
 # Create classifiers
 steps_tree = [('Tree', DecisionTreeClassifier())]
-steps_forest = [('Forest', RandomForestClassifier())]
+steps_forest = [('Forest', RandomForestClassifier(random_state=3))]
 steps_logistic = [('Logis', LogisticRegression(solver='liblinear'))]
 steps_svc = [('SVC', SVC())]
 steps_knn = [('KNN', KNeighborsClassifier())]
