@@ -1,4 +1,4 @@
-# Data-Science-Projects-Exercises
+# Data Science Projects & Exercises
 
 ## Projects/Exercises
 ### Classification
