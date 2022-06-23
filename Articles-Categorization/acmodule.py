@@ -40,6 +40,24 @@ class ModelConfig():
         self.dropout_val = dropout_val
 
     def std_data_vectorization(self, data, oov_token='<OOV>'):
+        """
+        Create tokenizer object and the word index of the tokenizer
+
+        Parameters
+        ----------
+        data : array-like
+            The text data for creating the tokenizer.
+        oov_token : str, optional
+            DESCRIPTION. The default is '<OOV>'.
+
+        Returns
+        -------
+        tokenizer : Tokenizer object
+            The tokenizer object created from given data.
+        tokenizer.word_index : dict
+            A dictionary containing the words and their respective token.
+
+        """
         tokenizer = Tokenizer(num_words=self.n_words, oov_token=oov_token)
         tokenizer.fit_on_texts(data)
 
@@ -51,6 +69,23 @@ class ModelConfig():
         return tokenizer, tokenizer.word_index
 
     def get_pad_sequences(self, tokenizer, data):
+        """
+        Return padding sequences from given tokenizer and data.
+
+        Parameters
+        ----------
+        tokenizer : Tokenizer object
+            The tokenizer is required to create a dummy sequences.
+        data : array-like
+            DESCRIPTION.
+
+        Returns
+        -------
+        padd_seq : array-like
+            The padding sequences are created with maximum length
+            specified during creation of the class.
+
+        """
         dummy_seq = tokenizer.texts_to_sequences(data)
 
         padd_seq = pad_sequences(dummy_seq, maxlen=self.maxlen,
@@ -99,6 +134,14 @@ class ModelConfig():
         return model
 
     def get_reports(self):
+        """
+        Save accuracy and f1 scores, and model performance in a dictionary.
+
+        Returns
+        -------
+        None.
+
+        """
         cr = classification_report(self.y_true, self.y_pred,
                                    output_dict=True)
         self.acc_score = cr.get('accuracy')
@@ -116,11 +159,48 @@ class ModelConfig():
                                  }
 
     def get_prediction(self, model, X_test, y_test):
+        """
+        Make prediction with given test data.
+
+        Parameters
+        ----------
+        model : TYPE
+            DESCRIPTION.
+        X_test : TYPE
+            DESCRIPTION.
+        y_test : TYPE
+            DESCRIPTION.
+
+        Returns
+        -------
+        None.
+
+        """
         self.y_pred = model.predict(X_test).argmax(1)
         self.y_true = y_test.argmax(1)
 
     def show_reports(self, class_report=True, acc_score=False,
                      plot_confusion_matrix=False, display_labels=None):
+        """
+        Display a variery of reports depending on the parameters.
+
+        Parameters
+        ----------
+        class_report : bool, optional
+            The option to show classification report. The default is True.
+        acc_score : bool, optional
+            The option to show accuracy score. The default is False.
+        plot_confusion_matrix : bool, optional
+            The option to display confusion matrix. The default is False.
+        display_labels : TYPE, optional
+            If provided, labels will be shown in confusion matrix.
+            The default is None.
+
+        Returns
+        -------
+        None.
+
+        """
 
         if class_report:
             print(classification_report(self.y_true, self.y_pred))
@@ -142,6 +222,21 @@ class ModelConfig():
 
 
 def plot_training(hist, to_save=False):
+    """
+    Plot training graph with matplotlib.
+
+    Parameters
+    ----------
+    hist : TYPE
+        DESCRIPTION.
+    to_save : bool, optional
+        The option to save the created figure. The default is False.
+
+    Returns
+    -------
+    None.
+
+    """
     loss = list(hist.history.keys())[::2]
     metrics = list(hist.history.keys())[1::2]
 
@@ -160,6 +255,28 @@ def plot_training(hist, to_save=False):
 
 
 def std_train_test_split(X, y):
+    """
+    A standard way of splitting train and test data.
+
+    Parameters
+    ----------
+    X : TYPE
+        Features data.
+    y : TYPE
+        Target data.
+
+    Returns
+    -------
+    X_train : TYPE
+        DESCRIPTION.
+    X_test : TYPE
+        DESCRIPTION.
+    y_train : TYPE
+        DESCRIPTION.
+    y_test : TYPE
+        DESCRIPTION.
+
+    """
     X_train, X_test, y_train, y_test = train_test_split(X,
                                                         y,
                                                         test_size=0.3,
@@ -172,6 +289,19 @@ def std_train_test_split(X, y):
 
 
 def save_reports(data_num):
+    """
+    Saving reports inside a csv file.
+
+    Parameters
+    ----------
+    data_num : int
+        The number that reflects the different model configurations used.
+
+    Returns
+    -------
+    None.
+
+    """
     data_rows = []
 
     for i in range(data_num):
@@ -187,14 +317,3 @@ def save_reports(data_num):
         writer = csv.DictWriter(csvfile, fieldnames=fields)
         writer.writeheader()
         writer.writerows(data_rows)
-
-
-# TODO: add docstring
-"""
-    There are a few more ideas I wanted to experiment with the
-    ModelConfig class but I will try to further experiment it later
-    due to time constraint.
-
-    I might have complicated some things here, very sorry if it is not
-    quite readable or understandable
-"""
