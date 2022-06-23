@@ -64,6 +64,7 @@ heart_attack_chance = {0: 'less chance of heart attack',
 
 new_pred = model.predict(scaled_x)
 
+# %% Model Evaluation
 evaluate_model(model, y_true=y_new_test, y_pred=new_pred)
 
 # %% Streamlit app
