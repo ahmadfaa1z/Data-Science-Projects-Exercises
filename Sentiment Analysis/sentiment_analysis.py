@@ -134,8 +134,7 @@ class DeepLearningModel():
 # %% Other functions
 
 
-def std_data_vectorization(data, num_words=10000, oov_token='<OOV>',
-                           maxlen=200):
+def std_data_vectorization(data, num_words=10000, oov_token='<OOV>'):
     # tokenizer object
     tokenizer = Tokenizer(num_words=num_words, oov_token=oov_token)
     tokenizer.fit_on_texts(data)
